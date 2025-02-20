@@ -13,7 +13,7 @@ int main() {
     printf("Digite o código da carta 1: ");
     scanf("%s", codigo1);
     printf("Digite o nome da cidade 1: ");
-    scanf(" %[^\n]", nomeCidade1); // Lê até a nova linha
+    scanf("%[^\n]", &nomeCidade1); // Lê até a nova linha
     printf("Digite a população da cidade 1: ");
     scanf("%lu", &populacao1);  // Corrigido para %lu
     printf("Digite a área da cidade 1 (em km²): ");
@@ -37,8 +37,8 @@ int main() {
     float area2, pib2, densidadePopulacional2, pibPerCapita2, superPoder2;
 
      // Leitura dos dados da segunda carta
-    printf("Digite o estado da cidade: 2");
-    scanf("%s", estado2);
+    printf("Digite o estado da cidade 2: ");
+    scanf("%s", &estado2);
     printf("Digite o código da carta 2: ");
     scanf("%s", codigo2);
     printf("Digite o nome da cidade 2: ");
@@ -68,7 +68,8 @@ int main() {
      printf("Densidade Populacional: Carta %d venceu\n", densidadePopulacional1 < densidadePopulacional2 ? 1 : 2);
      printf("PIB per Capita: Carta %d venceu\n", pibPerCapita1 > pibPerCapita2 ? 1 : 2);
      printf("Super Poder: Carta %d venceu\n", superPoder1 > superPoder2 ? 1 : 2);
- 
+
+
      return 0;
 
 }
