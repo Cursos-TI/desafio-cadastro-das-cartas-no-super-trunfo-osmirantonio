@@ -1,4 +1,5 @@
     #include <stdio.h>
+    #include <string.h>
 
 int main() {
     // Declaração das variáveis para a primeira carta
@@ -8,12 +9,16 @@ int main() {
     float area1, pib1, densidadePopulacional1, pibPerCapita1,superPoder1;
     
     // Leitura dos dados da primeira carta
-    printf("Digite o estado da cidade 1: ");
-    scanf("%s", estado1);
+    printf("Digite o estado da cidade 1:");
+    scanf("%s", &estado1);
     printf("Digite o código da carta 1: ");
-    scanf("%s", codigo1);
+    scanf("%s", &codigo1);
     printf("Digite o nome da cidade 1: ");
-    scanf("%[^\n]", &nomeCidade1); // Lê até a nova linha
+
+    getchar();  // Limpar o buffer de entrada
+    fgets(nomeCidade1, 50, stdin);  // Usar fgets para ler até a nova linha
+    nomeCidade1[strcspn(nomeCidade1, "\n")] = 0;  // Remover a quebra de linha no final da string
+
     printf("Digite a população da cidade 1: ");
     scanf("%lu", &populacao1);  // Corrigido para %lu
     printf("Digite a área da cidade 1 (em km²): ");
@@ -40,9 +45,14 @@ int main() {
     printf("Digite o estado da cidade 2: ");
     scanf("%s", &estado2);
     printf("Digite o código da carta 2: ");
-    scanf("%s", codigo2);
+    scanf("%s", &codigo2);
     printf("Digite o nome da cidade 2: ");
-    scanf(" %[^\n]", nomeCidade2); // Lê até a nova linha
+
+    getchar();  // Limpar o buffer de entrada
+    fgets(nomeCidade2, 50, stdin);  // Usar fgets para ler até a nova linha
+    nomeCidade2[strcspn(nomeCidade2, "\n")] = 0;  // Remover a quebra de linha no final da string
+
+    
     printf("Digite a população da cidade 2: ");
     scanf("%lu", &populacao2);  // Corrigido para %lu
     printf("Digite a área da cidade 2 (em km²): ");
@@ -59,15 +69,51 @@ int main() {
     // Cálculo do SuperPoder
     superPoder2 = (float)populacao2 + area2 + (pib2 * 1e9) + pontosTuristicos2 + (1.0 / densidadePopulacional2);
 
-     // Exibição das comparações
+     // Exibição das comparações com if e else
      printf("\nComparacao de Cartas:\n");
-     printf("Populacao: Carta %d venceu\n", populacao1 > populacao2 ? 1 : 2);
-     printf("Area: Carta %d venceu\n", area1 > area2 ? 1 : 2);
-     printf("PIB: Carta %d venceu\n", pib1 > pib2 ? 1 : 2);
-     printf("Pontos Turisticos: Carta %d venceu\n", pontosTuristicos1 > pontosTuristicos2 ? 1 : 2);
-     printf("Densidade Populacional: Carta %d venceu\n", densidadePopulacional1 < densidadePopulacional2 ? 1 : 2);
-     printf("PIB per Capita: Carta %d venceu\n", pibPerCapita1 > pibPerCapita2 ? 1 : 2);
-     printf("Super Poder: Carta %d venceu\n", superPoder1 > superPoder2 ? 1 : 2);
+
+     if (populacao1 > populacao2){
+        printf("População: Carta 1 venceu!\n");
+     } else{
+        printf("População: Carta 2 Venceu\n");
+     }
+
+     if (area1 > area2){
+        printf("Área: Carta 1 venceu!\n");
+     } else{
+        printf("Área: Carta 2 Venceu\n");
+     }
+
+     if (pib1 > pib2){
+        printf("PIB: Carta 1 venceu!\n");
+     } else{
+        printf("PIB: Carta 2 Venceu\n");
+     }
+
+     if (pontosTuristicos1 > pontosTuristicos2){
+        printf("Pontos Turisticos: Carta 1 venceu!\n");
+     } else{
+        printf("Pontos Turisticos: Carta 2 Venceu\n");
+     }
+
+     if (densidadePopulacional1 > densidadePopulacional2){
+        printf("Densidade Populacional: Carta 1 venceu!\n");
+     } else{
+        printf("Densidade Populacional: Carta 2 Venceu\n");
+     }
+
+     if (pibPerCapita1 > pibPerCapita2){
+        printf("PIB per Capita: Carta 1 venceu!\n");
+     } else{
+        printf("Pib per Capita: Carta 2 Venceu\n");
+     }
+     
+     if (superPoder1 > superPoder2){
+        printf("Super Poder: Carta 1 venceu!\n");
+     } else{
+        printf("Super Poder: Carta 2 Venceu\n");
+     }
+    
 
 
      return 0;
